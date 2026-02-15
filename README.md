@@ -36,10 +36,11 @@ ts-node
 
 Estructura del Proyecto
 challenge-for-it/
-├── backend/
+├── backend/rest_api_node_ts_server
 │   ├── src/
 │   │   ├── config/
 │   │   │   └── db.ts
+        ├── models/
 │   │   ├── server.ts
 │   │   └── index.ts
 │   ├── package.json
