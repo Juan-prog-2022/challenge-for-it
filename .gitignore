@@ -10,3 +10,15 @@ dist/
 # Ignore log files
 npm-debug.log*
 yarn-debug.log*
+yarn-error.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Vite
+.vite/
+
+# SQLite
+*.sqlite
+*.sqlite3

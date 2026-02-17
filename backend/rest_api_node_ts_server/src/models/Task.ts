@@ -1,5 +1,5 @@
 import { DataTypes, Model, Optional } from "sequelize";
-import sequelize from "../config/db.js";
+import { sequelize } from "../config/db";
 
 interface Task {
   id: number;
@@ -10,29 +10,23 @@ interface Task {
   updatedAt?: Date;
 }
 
-interface TaskCreationAttributes extends Optional<Task, "id" | "createdAt" | "updatedAt"> {}
+interface TaskCreationAttributes extends Optional<Task, "id" | "createdAt" | "updatedAt"> { }
 
-export class TaskModel extends Model<Task, TaskCreationAttributes> implements Task {
-  public id!: number;
-  public title!: string;
-  public description!: string;
-  public completed!: boolean;
-  public readonly createdAt!: Date;
-  public readonly updatedAt!: Date;
-}
+export class TaskModel extends Model<Task, TaskCreationAttributes> {}
 
 TaskModel.init({
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
-    autoIncrement: true
+    autoIncrement: true,
+    allowNull: false
   },
   title: {
-    type: DataTypes.STRING,
+    type: DataTypes.STRING(255),
     allowNull: false
   },
   description: {
-    type: DataTypes.STRING,
+    type: DataTypes.STRING(500),
     allowNull: false
   },
   completed: {
@@ -41,5 +35,6 @@ TaskModel.init({
   }
 }, {
   sequelize,
-  tableName: "tasks"
+  tableName: "tasks",
+  timestamps: true
 })
